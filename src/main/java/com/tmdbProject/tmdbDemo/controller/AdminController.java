@@ -26,6 +26,8 @@ public class AdminController extends BaseController {
     private static final String ROLE_ADMIN = "ADMIN";
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
+    private static final String deneme = "deneme";
+
     @Autowired
     public AdminController(UserService theUserService, TokenService theTokenService) {
         userService = theUserService;
