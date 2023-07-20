@@ -1,11 +1,7 @@
 package com.tmdbProject.tmdbDemo.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ser.Serializers;
 import com.tmdbProject.tmdbDemo.entity.Movie;
 import com.tmdbProject.tmdbDemo.entity.Token;
-import com.tmdbProject.tmdbDemo.entity.User;
 import com.tmdbProject.tmdbDemo.exceptions.MovieNotFoundException;
 import com.tmdbProject.tmdbDemo.exceptions.UserNotFoundException;
 import com.tmdbProject.tmdbDemo.exceptions.WatchlistException;
@@ -13,8 +9,6 @@ import com.tmdbProject.tmdbDemo.service.MovieService;
 import com.tmdbProject.tmdbDemo.service.TokenService;
 import com.tmdbProject.tmdbDemo.service.UserService;
 import com.tmdbProject.tmdbDemo.service.WatchlistService;
-import com.tmdbProject.tmdbDemo.token.JwtUtils;
-import jakarta.servlet.http.HttpServletRequest;
 import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,11 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.io.IOException;
-import java.util.Base64;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")

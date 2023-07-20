@@ -2,13 +2,11 @@ package com.tmdbProject.tmdbDemo.service;
 
 import com.tmdbProject.tmdbDemo.dao.TokenRepository;
 import com.tmdbProject.tmdbDemo.entity.Token;
-import com.tmdbProject.tmdbDemo.entity.User;
 import com.tmdbProject.tmdbDemo.exceptions.TokenNotFoundException;
 import com.tmdbProject.tmdbDemo.exceptions.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 
 @Service
 public class TokenServiceImpl implements TokenService {

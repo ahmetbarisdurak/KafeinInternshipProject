@@ -4,10 +4,8 @@ import com.tmdbProject.tmdbDemo.entity.Token;
 import com.tmdbProject.tmdbDemo.entity.User;
 import com.tmdbProject.tmdbDemo.exceptions.TokenNotFoundException;
 import com.tmdbProject.tmdbDemo.exceptions.UserNotFoundException;
-import com.tmdbProject.tmdbDemo.service.MovieService;
 import com.tmdbProject.tmdbDemo.service.TokenService;
 import com.tmdbProject.tmdbDemo.service.UserService;
-import com.tmdbProject.tmdbDemo.service.WatchlistService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.ExecutionException;
 
 @RestController
 @RequestMapping("/api")
@@ -26,7 +22,6 @@ public class AdminController extends BaseController {
     private static final String ROLE_ADMIN = "ADMIN";
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
-    private static final String deneme = "deneme";
 
     @Autowired
     public AdminController(UserService theUserService, TokenService theTokenService) {
