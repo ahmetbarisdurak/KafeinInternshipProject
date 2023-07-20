@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class TokenServiceImpl implements TokenService {
 
-    private TokenRepository tokenRepository;
+    private final TokenRepository tokenRepository;
 
     @Autowired
     public TokenServiceImpl(TokenRepository theTokenRepository) {

@@ -25,8 +25,8 @@ public class UserController extends BaseController {
     private static final String ROLE_USER = "USER";
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
-    private MovieService movieService;
-    private WatchlistService watchlistService;
+    private final MovieService movieService;
+    private final WatchlistService watchlistService;
 
 
     @Autowired
@@ -81,7 +81,7 @@ public class UserController extends BaseController {
             // Find user by token
             Token userToken = tokenService.findByToken(token); // If it is null throws runtime exception
 
-            Movie foundMovie = null;
+            Movie foundMovie;
 
             foundMovie = movieService.findById(movieId); //throws error for parsing or no movie found
 

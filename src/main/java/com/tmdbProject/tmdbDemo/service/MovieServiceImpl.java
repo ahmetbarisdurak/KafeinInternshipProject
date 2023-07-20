@@ -19,8 +19,8 @@ import java.util.List;
 public class MovieServiceImpl implements MovieService{
 
     private static final String BASE_URL = "https://api.themoviedb.org/3";
-    private JSONParser jsonParser;
-    private RestTemplate restTemplate;
+    private final JSONParser jsonParser;
+    private final RestTemplate restTemplate;
 
     @Value("${api.key}")
     private String apiKey;
@@ -44,7 +44,7 @@ public class MovieServiceImpl implements MovieService{
         if (response.getStatusCode().is2xxSuccessful()) {
             String responseBody = response.getBody();
 
-            JSONObject movieObject = null;
+            JSONObject movieObject;
             try {
                 movieObject = (JSONObject) jsonParser.parse(responseBody);
             }
@@ -76,7 +76,7 @@ public class MovieServiceImpl implements MovieService{
 
             String responseBody = response.getBody();
 
-            JSONObject  jsonObject = null;
+            JSONObject  jsonObject;
             try {
                 jsonObject = (JSONObject) jsonParser.parse(responseBody);
             }
@@ -86,7 +86,7 @@ public class MovieServiceImpl implements MovieService{
 
             JSONArray resultsArray = (JSONArray) jsonObject.get("results");
 
-            List<Movie> foundMovieList = new ArrayList<Movie>();
+            List<Movie> foundMovieList = new ArrayList<>();
 
             for(int i = 0; i < resultsArray.size(); i++) {
 
@@ -114,23 +114,19 @@ public class MovieServiceImpl implements MovieService{
         HttpEntity<Void> entity = new HttpEntity<>(headers);
 
         // calling GET request
-        ResponseEntity<String> response = restTemplate.exchange(
+        return restTemplate.exchange(
                 url,
                 HttpMethod.GET,
                 entity,
                 String.class
         );
-
-        return response;
     }
     private Movie extractMovieDetails(JSONObject movieObject) {
         String posterURL = (String) movieObject.get("poster_path");
         long movieId = (long) movieObject.get("id");
         String movieTitle = (String) movieObject.get("original_title");
 
-        Movie foundMovie = new Movie(movieId, movieTitle, posterURL);
-
-        return foundMovie;
+        return new Movie(movieId, movieTitle, posterURL);
     }
 
 }

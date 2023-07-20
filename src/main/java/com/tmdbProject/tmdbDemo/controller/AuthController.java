@@ -27,8 +27,8 @@ public class AuthController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
 
-    private UserService userService;
-    private TokenService tokenService;
+    private final UserService userService;
+    private final TokenService tokenService;
 
 
     @Autowired
